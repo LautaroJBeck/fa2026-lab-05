@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-2048
+  labels:
+    app: game-2048
+    env: {{ .Values.env.appEnv }}
+spec:
+  # TODO: pull the replica count from values.yaml instead of hardcoding it
+  replicas: <FILL_IN>
+  selector:
+    matchLabels:
+      app: game-2048
+  template:
+    metadata:
+      labels:
+        app: game-2048
+        env: {{ .Values.env.appEnv }}
+    spec:
+      containers:
+        - name: game-2048
+          # TODO: build the image ref from .Values.image.repository and .Values.image.tag
+          image: "<FILL_IN>"
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_ENV
+              value: {{ .Values.env.appEnv | quote }}
+          resources:
+            limits:
+              # TODO: pull the memory limit from values.yaml
+              memory: <FILL_IN>

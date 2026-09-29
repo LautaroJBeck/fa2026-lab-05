@@ -1,0 +1,20 @@
+# These are the chart's defaults. They match manual/dev exactly on purpose -
+# treat this file as "what dev looks like" and override only what changes
+# per environment in values-prod.yaml.
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/cis1912/2048
+  tag: latest
+
+resources:
+  limits:
+    memory: 128Mi
+
+env:
+  appEnv: dev
+
+service:
+  type: ClusterIP
+  port: 80
