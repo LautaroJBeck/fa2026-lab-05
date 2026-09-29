@@ -7,7 +7,7 @@ metadata:
     env: {{ .Values.env.appEnv }}
 spec:
   # TODO: pull the replica count from values.yaml instead of hardcoding it
-  replicas: <FILL_IN>
+  replicas: {{ .Values.replicaCount}}
   selector:
     matchLabels:
       app: game-2048
@@ -20,7 +20,7 @@ spec:
       containers:
         - name: game-2048
           # TODO: build the image ref from .Values.image.repository and .Values.image.tag
-          image: "<FILL_IN>"
+          image: {{.Values.image.repository}}
           ports:
             - containerPort: 80
           env:
@@ -29,4 +29,4 @@ spec:
           resources:
             limits:
               # TODO: pull the memory limit from values.yaml
-              memory: <FILL_IN>
+              memory: {{.Values.resources.limits.memory}}
